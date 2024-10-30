@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('img.jpg'); /* Subtle texture */
+            background-color: #f4f7fc;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .todo-container {
+            background-color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 16px;
+        }
+
+        input:focus, select:focus, button:focus {
+            border-color: #9a4bd2;
+        }
+
+        button {
+            background-color:#9a4bd2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #9a4bd2;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .task-item.completed span {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .task-item div {
+            display: flex;
+            gap: 5px;
+        }
+
+        .task-item button {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .filter-container select {
+            width: calc(100% - 20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>Todo List</h1>
+        
+        <input type="text" id="taskInput" placeholder="Add a task">
+        <input type="date" id="dueDate">
+        <select id="priority">
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+        </select>
+        <button onclick="addTask()">Add Task</button>
+
+        <div class="filter-container">
+            <h3>Filter Tasks</h3>
+            <select id="filter" onchange="filterTasks()">
+                <option value="all">All Tasks</option>
+                <option value="completed">Completed Tasks</option>
+                <option value="pending">Pending Tasks</option>
+            </select>
+        </div>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
